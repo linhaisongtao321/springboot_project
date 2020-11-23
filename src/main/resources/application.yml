@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/spingboot_mybatis?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
+person:
+  lastName: zhangsan
+  age: 20
+  boss: false
+  birth: 2020/9/17
+  maps: {"1",111,"2",222}
+  lists:
+    -wang
+    -zhang
+    -li
+  dog:
+    name: dog
+    age: 1
+debug: true
