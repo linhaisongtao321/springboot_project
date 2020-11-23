@@ -1,6 +1,6 @@
 package com.lhst.springboot_project.mapper;
 
-import com.lhst.springboot_project.entity.SysLogEntity;
+import com.lhst.springboot_project.po.SysLogEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
