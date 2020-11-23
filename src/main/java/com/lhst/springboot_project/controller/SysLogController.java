@@ -7,6 +7,7 @@ import com.lhst.springboot_project.util.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/syslog")
 public class SysLogController {
-    @Autowired
+    @Resource
     private SysLogService sysLogService;
 
     /**

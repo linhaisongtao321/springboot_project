@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lhst.springboot_project.po.SysUserEntity;
 import com.lhst.springboot_project.service.SysUserService;
 
+import javax.annotation.Resource;
 
 
 /**
@@ -27,7 +28,7 @@ import com.lhst.springboot_project.service.SysUserService;
 @RestController
 @RequestMapping("springboot_project/sysuser")
 public class SysUserController {
-    @Autowired
+    @Resource
     private SysUserService sysUserService;
 
     /**

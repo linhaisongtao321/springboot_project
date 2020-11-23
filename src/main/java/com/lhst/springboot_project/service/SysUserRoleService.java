@@ -1,5 +1,6 @@
 package com.lhst.springboot_project.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysUserRoleEntity;
 
 import java.util.List;
@@ -16,9 +17,15 @@ public interface SysUserRoleService {
 
     void save(SysUserRoleEntity sysUserRole);
 
-    int updateById(SysUserRoleEntity sysUserRole);
+    void updateById(SysUserRoleEntity sysUserRole);
 
-    int removeByIds(List<Long> asList);
+    void removeByIds(List<Long> asList);
+
+//    void save(SysUserRoleEntity sysUserRole);
+//
+//    int updateById(SysUserRoleEntity sysUserRole);
+//
+//    int removeByIds(List<Long> asList);
 
 //    PageUtils queryPage(Map<String, Object> params);
 }

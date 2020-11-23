@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lhst.springboot_project.po.UserEntity;
 
+import javax.annotation.Resource;
 
 
 /**
@@ -29,7 +30,7 @@ import com.lhst.springboot_project.po.UserEntity;
 @RestController
 @RequestMapping("springboot_project/user")
 public class UserController {
-    @Autowired
+    @Resource
     private UserService userService;
 
     /**

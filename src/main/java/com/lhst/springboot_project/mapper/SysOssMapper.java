@@ -1,17 +1,17 @@
 package com.lhst.springboot_project.mapper;
 
-import com.lhst.springboot_project.entity.SysUserEntity;
+import com.lhst.springboot_project.po.SysOssEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 系统用户
+ * 文件上传
  * 
  * @author wangdj
  * @email ${email}
- * @date 2020-11-22 16:12:06
+ * @date 2020-11-22 16:12:07
  */
 @Mapper
-public interface SysUserDao extends BaseMapper<SysUserEntity> {
+public interface SysOssMapper extends BaseMapper<SysOssEntity> {
 	
 }

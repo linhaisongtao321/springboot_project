@@ -5,9 +5,11 @@ import com.lhst.springboot_project.service.SysConfigService;
 import com.lhst.springboot_project.util.ResponseVo;
 import com.lhst.springboot_project.util.ResponseResult;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -24,13 +26,14 @@ import java.util.Map;
 @RequestMapping("/sysconfig")
 @Api(description = "系统配置信息表")
 public class SysConfigController {
-    @Autowired
+    @Resource
     private SysConfigService sysConfigService;
 
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
+    @ApiOperation(value = "获取系统信息配置表")
     public ResponseVo list(@RequestParam Map<String, Object> params){
 
         return ResponseResult.success(new Object());
@@ -40,8 +43,9 @@ public class SysConfigController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    public ResponseVo info(@PathVariable("id") Long id){
+    @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
+    @ApiOperation(value = "根据用户id")
+    public ResponseVo info(@PathVariable("根据id获取系统信息") Long id){
 		SysConfigEntity sysConfig = sysConfigService.getById(id);
 
         return ResponseResult.success(sysConfig);
@@ -50,7 +54,8 @@ public class SysConfigController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    @ApiOperation(value = "保存系统信息配置表")
     public ResponseVo save(@RequestBody SysConfigEntity sysConfig){
 		sysConfigService.save(sysConfig);
 
@@ -60,7 +65,8 @@ public class SysConfigController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @ApiOperation(value = "修改系统信息配置表")
     public ResponseVo update(@RequestBody SysConfigEntity sysConfig){
 		sysConfigService.updateById(sysConfig);
 
@@ -70,8 +76,10 @@ public class SysConfigController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ApiOperation(value = "刪除系统信息配置表")
     public ResponseVo delete(@RequestBody Long[] ids){
+
 		sysConfigService.removeByIds(Arrays.asList(ids));
 
         return ResponseResult.success(new Object());

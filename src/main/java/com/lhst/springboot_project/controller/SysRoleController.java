@@ -7,6 +7,7 @@ import com.lhst.springboot_project.util.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("springboot_project/sysrole")
 public class SysRoleController {
-    @Autowired
+    @Resource
     private SysRoleService sysRoleService;
 
     /**
@@ -60,9 +61,9 @@ public class SysRoleController {
      */
     @RequestMapping("/update")
     public ResponseVo update(@RequestBody SysRoleEntity sysRole){
-		int count=sysRoleService.updateById(sysRole);
+		sysRoleService.updateById(sysRole);
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -70,9 +71,9 @@ public class SysRoleController {
      */
     @RequestMapping("/delete")
     public ResponseVo delete(@RequestBody Long[] roleIds){
-        int count=sysRoleService.removeByIds(Arrays.asList(roleIds));
+        boolean result = sysRoleService.removeByIds(Arrays.asList(roleIds));
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(result);
     }
 
 }

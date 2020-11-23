@@ -1,29 +1,33 @@
 package com.lhst.springboot_project.service.impl;
 
-import org.springframework.stereotype.Service;
-import java.util.Map;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lhst.common.utils.PageUtils;
-import com.lhst.common.utils.Query;
-
-import com.lhst.springboot_project.dao.SysRoleMenuDao;
-import com.lhst.springboot_project.entity.SysRoleMenuEntity;
+import com.lhst.springboot_project.po.SysRoleMenuEntity;
 import com.lhst.springboot_project.service.SysRoleMenuService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service("sysRoleMenuService")
-public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuDao, SysRoleMenuEntity> implements SysRoleMenuService {
+public class SysRoleMenuServiceImpl implements SysRoleMenuService {
+
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<SysRoleMenuEntity> page = this.page(
-                new Query<SysRoleMenuEntity>().getPage(params),
-                new QueryWrapper<SysRoleMenuEntity>()
-        );
-
-        return new PageUtils(page);
+    public SysRoleMenuEntity getById(Long id) {
+        return null;
     }
 
+    @Override
+    public void save(SysRoleMenuEntity sysRoleMenu) {
+
+    }
+
+    @Override
+    public int updateById(SysRoleMenuEntity sysRoleMenu) {
+        return 0;
+    }
+
+    @Override
+    public int removeByIds(List<Long> asList) {
+        return 0;
+    }
 }

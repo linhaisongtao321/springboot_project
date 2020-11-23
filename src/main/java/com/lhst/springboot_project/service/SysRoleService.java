@@ -1,8 +1,7 @@
 package com.lhst.springboot_project.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysRoleEntity;
-
-import java.util.List;
 
 /**
  * 角色
@@ -11,14 +10,16 @@ import java.util.List;
  * @email ${email}
  * @date 2020-11-22 16:12:07
  */
-public interface SysRoleService{
+public interface SysRoleService extends IService<SysRoleEntity> {
 
-    SysRoleEntity getById(Long roleId);
-
-    void save(SysRoleEntity sysRole);
-
-    int updateById(SysRoleEntity sysRole);
-
-    int removeByIds(List<Long> asList);
+//    PageUtils  queryPage(Map<String, Object> params);
 }
+//    SysRoleEntity getById(Long roleId);
+//
+//    void save(SysRoleEntity sysRole);
+//
+//    int updateById(SysRoleEntity sysRole);
+//
+//    int removeByIds(List<Long> asList);
+//}
 

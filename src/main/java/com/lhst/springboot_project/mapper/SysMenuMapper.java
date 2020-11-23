@@ -1,6 +1,6 @@
 package com.lhst.springboot_project.mapper;
 
-import com.lhst.springboot_project.entity.SysMenuEntity;
+import com.lhst.springboot_project.po.SysMenuEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2020-11-22 16:12:07
  */
 @Mapper
-public interface SysMenuDao extends BaseMapper<SysMenuEntity> {
+public interface SysMenuMapper extends BaseMapper<SysMenuEntity> {
 	
 }

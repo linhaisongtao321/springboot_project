@@ -1,21 +1,15 @@
 package com.lhst.springboot_project.controller;
 
+import com.lhst.springboot_project.po.TokenEntity;
+import com.lhst.springboot_project.service.TokenService;
+import com.lhst.springboot_project.util.ResponseResult;
+import com.lhst.springboot_project.util.ResponseVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.lhst.springboot_project.entity.TokenEntity;
-import com.lhst.springboot_project.service.TokenService;
-import com.lhst.common.utils.PageUtils;
-import com.lhst.common.utils.R;
-
 
 
 /**
@@ -28,17 +22,17 @@ import com.lhst.common.utils.R;
 @RestController
 @RequestMapping("springboot_project/token")
 public class TokenController {
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = tokenService.queryPage(params);
+    public ResponseVo list(@RequestParam Map<String, Object> params){
+//        PageUtils page = tokenService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseResult.success(null);
     }
 
 
@@ -46,40 +40,40 @@ public class TokenController {
      * 信息
      */
     @RequestMapping("/info/{userId}")
-    public R info(@PathVariable("userId") Long userId){
+    public ResponseVo info(@PathVariable("userId") Long userId){
 		TokenEntity token = tokenService.getById(userId);
 
-        return R.ok().put("token", token);
+        return ResponseResult.success(null);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody TokenEntity token){
+    public ResponseVo save(@RequestBody TokenEntity token){
 		tokenService.save(token);
 
-        return R.ok();
+        return ResponseResult.success(null);
     }
 
     /**
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody TokenEntity token){
+    public ResponseVo update(@RequestBody TokenEntity token){
 		tokenService.updateById(token);
 
-        return R.ok();
+        return ResponseResult.success(null);
     }
 
     /**
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] userIds){
+    public ResponseVo delete(@RequestBody Long[] userIds){
 		tokenService.removeByIds(Arrays.asList(userIds));
 
-        return R.ok();
+        return ResponseResult.success(null);
     }
 
 }

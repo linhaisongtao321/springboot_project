@@ -1,17 +1,17 @@
 package com.lhst.springboot_project.mapper;
 
-import com.lhst.springboot_project.entity.SysUserRoleEntity;
+import com.lhst.springboot_project.po.SysLogEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 用户与角色对应关系
+ * 系统日志
  * 
  * @author wangdj
  * @email ${email}
- * @date 2020-11-22 16:12:06
+ * @date 2020-11-22 16:12:07
  */
 @Mapper
-public interface SysUserRoleDao extends BaseMapper<SysUserRoleEntity> {
+public interface SysLogMapper extends BaseMapper<SysLogEntity> {
 	
 }

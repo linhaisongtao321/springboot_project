@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lhst.springboot_project.po.SysMenuEntity;
 import com.lhst.springboot_project.service.SysMenuService;
 
+import javax.annotation.Resource;
 
 
 /**
@@ -27,7 +28,7 @@ import com.lhst.springboot_project.service.SysMenuService;
 @RestController
 @RequestMapping("/sysmenu")
 public class SysMenuController {
-    @Autowired
+    @Resource
     private SysMenuService sysMenuService;
 
     /**

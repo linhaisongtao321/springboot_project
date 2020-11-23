@@ -13,8 +13,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+//@EnableKnife4j
 public class SwaggerConfigure {
-
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -29,7 +29,7 @@ public class SwaggerConfigure {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("数据服务 API")
+                .title("用户登录 API")
                 //创建人
                 .contact(new Contact("wangdj", "http://www.geovis.com", "wangdj@geovis.com.cn"))
                 //版本号
