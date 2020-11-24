@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-//@EnableKnife4j
 public class SwaggerConfigure {
     @Bean
     public Docket createRestApi() {

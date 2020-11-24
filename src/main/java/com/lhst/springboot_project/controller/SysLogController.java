@@ -4,6 +4,8 @@ import com.lhst.springboot_project.po.SysLogEntity;
 import com.lhst.springboot_project.service.SysLogService;
 import com.lhst.springboot_project.util.ResponseVo;
 import com.lhst.springboot_project.util.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/syslog")
+@Api(description = "日志信息")
 public class SysLogController {
     @Resource
     private SysLogService sysLogService;
@@ -29,8 +32,9 @@ public class SysLogController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public ResponseVo list(@RequestParam Map<String, Object> params){
+    @RequestMapping(value = "/list",method= RequestMethod.GET)
+    @ApiOperation("查询日志列表")
+    public ResponseVo list(){
 //       sysLogService.queryPage(params);
 
         return ResponseResult.success(new Object());
@@ -40,17 +44,18 @@ public class SysLogController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    public ResponseVo info(@PathVariable("id") Long id){
+    @RequestMapping(value = "/info",method= RequestMethod.GET)
+    @ApiOperation("根据id查询日志列表")
+    public ResponseVo info(@RequestParam("id") Long id){
 		SysLogEntity sysLog = sysLogService.getById(id);
-
         return ResponseResult.success(sysLog);
     }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method= RequestMethod.POST)
+    @ApiOperation("插入日志信息")
     public ResponseVo save(@RequestBody SysLogEntity sysLog){
 		sysLogService.save(sysLog);
 
@@ -60,7 +65,8 @@ public class SysLogController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method= RequestMethod.POST)
+    @ApiOperation("更新日志")
     public ResponseVo update(@RequestBody SysLogEntity sysLog){
         int count = sysLogService.updateById(sysLog);
 
@@ -70,7 +76,8 @@ public class SysLogController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete",method= RequestMethod.POST)
+    @ApiOperation("删除日志")
     public ResponseVo delete(@RequestBody Long[] ids){
         int count = sysLogService.removeByIds(Arrays.asList(ids));
         return ResponseResult.success(count);

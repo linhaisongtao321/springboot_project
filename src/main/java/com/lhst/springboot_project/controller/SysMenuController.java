@@ -1,25 +1,20 @@
 package com.lhst.springboot_project.controller;
 
+import com.lhst.springboot_project.po.SysMenuEntity;
+import com.lhst.springboot_project.service.SysMenuService;
+import com.lhst.springboot_project.util.ResponseResult;
+import com.lhst.springboot_project.util.ResponseVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.lhst.springboot_project.util.ResponseVo;
-import com.lhst.springboot_project.util.ResponseResult;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.lhst.springboot_project.po.SysMenuEntity;
-import com.lhst.springboot_project.service.SysMenuService;
-
-import javax.annotation.Resource;
-
 
 /**
- * 菜单管理
+ * 菜单管理O
  *
  * @author wangdj
  * @email ${email}
@@ -27,6 +22,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/sysmenu")
+@Api(description = "菜单信息")
 public class SysMenuController {
     @Resource
     private SysMenuService sysMenuService;
@@ -35,6 +31,7 @@ public class SysMenuController {
      * 列表
      */
     @RequestMapping("/list")
+    @ApiOperation("查询菜单列表")
     public ResponseVo list(@RequestParam Map<String, Object> params){
 //        PageUtils page = sysMenuService.queryPage(params);
 
@@ -46,6 +43,7 @@ public class SysMenuController {
      * 信息
      */
     @RequestMapping("/info/{menuId}")
+    @ApiOperation("根据id查询菜单")
     public ResponseVo info(@PathVariable("menuId") Long menuId){
 		SysMenuEntity sysMenu = sysMenuService.getById(menuId);
 
@@ -56,6 +54,7 @@ public class SysMenuController {
      * 保存
      */
     @RequestMapping("/save")
+    @ApiOperation("保存菜单")
     public ResponseVo save(@RequestBody SysMenuEntity sysMenu){
 		sysMenuService.save(sysMenu);
 
@@ -66,6 +65,7 @@ public class SysMenuController {
      * 修改
      */
     @RequestMapping("/update")
+    @ApiOperation("更新菜单")
     public ResponseVo update(@RequestBody SysMenuEntity sysMenu){
         int count = sysMenuService.updateById(sysMenu);
 
@@ -76,6 +76,7 @@ public class SysMenuController {
      * 删除
      */
     @RequestMapping("/delete")
+    @ApiOperation("删除菜单")
     public ResponseVo delete(@RequestBody Long[] menuIds){
         int count = sysMenuService.removeByIds(Arrays.asList(menuIds));
 

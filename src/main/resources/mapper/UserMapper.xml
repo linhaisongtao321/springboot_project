@@ -12,7 +12,12 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-<select id="selectbyname">
 
-</select>
+    <select id="getUserByName" resultMap="userMap">
+        select * from tb_user where username=#{username}
+    </select>
+
+    <select id="selectAllUsers" resultType="com.lhst.springboot_project.po.UserEntity">
+        select * from tb_user
+    </select>
 </mapper>

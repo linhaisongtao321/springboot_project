@@ -1,9 +1,11 @@
 package com.lhst.springboot_project.mapper;
 
-import com.lhst.springboot_project.po.UserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lhst.springboot_project.po.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 用户
@@ -15,5 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {
 
-    UserEntity selectbyname(String name);
+
+    UserEntity getUserByName(@Param("username") String username);
+
+    List<UserEntity> selectAllUsers();
 }

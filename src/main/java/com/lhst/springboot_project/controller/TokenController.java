@@ -20,7 +20,7 @@ import java.util.Map;
  * @date 2020-11-22 16:12:07
  */
 @RestController
-@RequestMapping("springboot_project/token")
+@RequestMapping("/token")
 public class TokenController {
     @Resource
     private TokenService tokenService;

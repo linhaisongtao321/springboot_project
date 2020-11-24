@@ -15,7 +15,7 @@ public interface SysLogService {
 
     SysLogEntity getById(Long id);
 
-    void save(SysLogEntity sysLog);
+    int save(SysLogEntity sysLog);
 
     int updateById(SysLogEntity sysLog);
 

@@ -5,12 +5,11 @@ import java.util.Map;
 
 import com.lhst.springboot_project.util.ResponseVo;
 import com.lhst.springboot_project.util.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.lhst.springboot_project.po.SysUserEntity;
 import com.lhst.springboot_project.service.SysUserService;
@@ -26,7 +25,8 @@ import javax.annotation.Resource;
  * @date 2020-11-22 16:12:06
  */
 @RestController
-@RequestMapping("springboot_project/sysuser")
+@RequestMapping("/sysuser")
+@Api(value = "用户信息")
 public class SysUserController {
     @Resource
     private SysUserService sysUserService;
@@ -34,48 +34,50 @@ public class SysUserController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public ResponseVo list(@RequestParam Map<String, Object> params){
+    @ApiOperation(value = "查询用户列表")
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public ResponseVo list(@RequestParam("id") String id){
 //        PageUtils page = sysUserService.queryPage(params);
-
-        return ResponseResult.success(null);
+        SysUserEntity sysUserEntity = sysUserService.getById(id);
+        return ResponseResult.success(sysUserEntity);
     }
 
 
     /**
      * 信息
      */
-    @RequestMapping("/info/{userId}")
+    @RequestMapping(value = "/info",method = RequestMethod.POST)
+    @ApiOperation(value = "根据id查询用户列表")
     public ResponseVo info(@PathVariable("userId") Long userId){
 		SysUserEntity sysUser = sysUserService.getById(userId);
-
         return ResponseResult.success(sysUser);
     }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    @ApiOperation(value = "保存用户信息")
     public ResponseVo save(@RequestBody SysUserEntity sysUser) {
         sysUserService.save(sysUser);
-
         return ResponseResult.success(null);
     }
 
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @ApiOperation(value = "更新用户列表")
     public ResponseVo update(@RequestBody SysUserEntity sysUser){
 		sysUserService.updateById(sysUser);
-
         return ResponseResult.success(null);
     }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ApiOperation(value = "删除用户列表")
     public ResponseVo delete(@RequestBody Long[] userIds){
 		sysUserService.removeByIds(Arrays.asList(userIds));
 
