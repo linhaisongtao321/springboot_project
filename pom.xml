@@ -65,41 +65,35 @@
             <version>1.8</version>
         </dependency>
 
-        <!-- swagger -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-        <!-- swagger-ui -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-
+        <!--&lt;!&ndash; swagger &ndash;&gt;-->
         <!--<dependency>-->
-            <!--<groupId>com.github.xiaoymin</groupId>-->
-            <!--<artifactId>knife4j-spring-boot-starter</artifactId>-->
-            <!--&lt;!&ndash;在引用时请在maven中央仓库搜索最新版本号&ndash;&gt;-->
-            <!--<version>2.0.2</version>-->
+            <!--<groupId>io.springfox</groupId>-->
+            <!--<artifactId>springfox-swagger2</artifactId>-->
+            <!--<version>2.5.0</version>-->
         <!--</dependency>-->
+        <!--&lt;!&ndash; swagger-ui &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>io.springfox</groupId>-->
+            <!--<artifactId>springfox-swagger-ui</artifactId>-->
+            <!--<version>2.5.0</version>-->
+        <!--</dependency>-->
+        <!--knife4j-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-ui</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <!--在引用时请在maven中央仓库搜索最新版本号-->
+            <version>2.0.2</version>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.1.0</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>com.baomidou</groupId>-->
-            <!--<artifactId>mybatis-plus-core</artifactId>-->
-            <!--<version>3.1.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.mybatis.spring.boot</groupId>-->
-            <!--<artifactId>mybatis-spring-boot-autoconfigure</artifactId>-->
-            <!--<version>2.1.0</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.data</groupId>

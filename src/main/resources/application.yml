@@ -40,11 +40,12 @@ spring:
       charset: utf-8
       force: true
       enabled: true
+  application:
+    name: springboot
 server:
   port: 9000
   servlet:
     context-path: /springboot
-
 
 
 #person:
@@ -62,3 +63,6 @@ server:
 #    age: 1
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
+logging:
+  file: springboot.log
+

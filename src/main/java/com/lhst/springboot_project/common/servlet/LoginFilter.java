@@ -24,7 +24,6 @@ public class LoginFilter implements Filter {
         if (redisUtil == null) {
             WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(filterConfig.getServletContext());
             redisUtil = (RedisUtil) context.getBean("redisUtil");
-            System.out.println(redisUtil);
         }
 
     }

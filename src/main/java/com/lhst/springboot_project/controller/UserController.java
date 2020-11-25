@@ -1,5 +1,6 @@
 package com.lhst.springboot_project.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lhst.springboot_project.Exception.ControllerExeption;
 import com.lhst.springboot_project.Exception.ServiceExeption;
@@ -10,16 +11,14 @@ import com.lhst.springboot_project.util.ResponseResult;
 import com.lhst.springboot_project.util.ResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -62,15 +61,15 @@ public class UserController {
      */
     @RequestMapping(value = "/login",method= RequestMethod.GET)
     @ApiOperation("用戶登录")
-    public ResponseVo login(@RequestParam("username") String username,String password) throws ControllerExeption {
+    public ResponseVo login(@RequestParam("username") String username,String password) throws ControllerExeption, ServiceExeption {
         String token=null;
+        List<UserEntity> listUser=new ArrayList<>();
         try{
             token = userService.getUserByName(username,password);
             return ResponseResult.success(token);
-        }catch (Exception e){
-            throw new ControllerExeption(e.getMessage());
+        }catch (ServiceExeption e){
+            return ResponseResult.fail(e.getMessage());
         }
-
     }
     /**
      * 列表
