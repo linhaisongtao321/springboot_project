@@ -2,6 +2,7 @@ package com.lhst.springboot_project.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lhst.springboot_project.Exception.ServiceExeption;
 import com.lhst.springboot_project.mapper.UserMapper;
 import com.lhst.springboot_project.po.UserEntity;
@@ -18,34 +19,15 @@ import java.util.stream.Collectors;
 
 
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
     @Resource
     RedisUtil redisUtil;
 
     @Resource
     UserMapper userMapper;
-    @Override
-    public UserEntity getById(Long userId) {
-        return userMapper.selectById(userId);
-    }
 
-    @Override
-    public void save(UserEntity user) {
 
-    }
-
-    @Override
-    public void updateById(UserEntity user) {
-
-    }
-
-    @Override
-    public void removeByIds(List<Long> asList) {
-
-    }
-
-    @Override
     public String getUserByName(String username,String password) throws ServiceExeption {
         UserEntity user = userMapper.getUserByName(username);
 
@@ -67,9 +49,4 @@ public class UserServiceImpl implements UserService {
         return token;
     }
 
-    @Override
-    public List<UserEntity> selectAllUsers() {
-
-        return userMapper.selectAllUsers();
-    }
 }

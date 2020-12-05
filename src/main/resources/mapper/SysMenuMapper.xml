@@ -3,7 +3,7 @@
 
 <mapper namespace="com.lhst.springboot_project.mapper.SysMenuMapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.lhst.springboot_project.po.SysMenuEntity" id="sysMenuMap">
         <result property="menuId" column="menu_id"/>
         <result property="parentId" column="parent_id"/>
@@ -14,6 +14,65 @@
         <result property="icon" column="icon"/>
         <result property="orderNum" column="order_num"/>
     </resultMap>
+    <select id="getMenuById" resultMap="sysMenuMap">
+        select * from sys_menu where menu_id=#{menuId}
+    </select>
 
+    <update id="updateMenu">
+        update sys_menu
+        <trim prefix="set" suffixOverrides=",">
+            <if test="sysMenu.parentId !=null and sysMenu.parentId!=''">
+                parentId=sys_menu.parentId,
+            </if>
+            <if test="sysMenu.name !=null and sysMenu.name!=''">
+                name=sys_menu.name,
+            </if>
+            <if test="sysMenu.url !=null and sysMenu.url!=''">
+                url=sys_menu.url,
+            </if>
+            <if test="sysMenu.perms !=null and sysMenu.perms!=''">
+                perms=sys_menu.perms,
+            </if>
+            <if test="sysMenu.type !=null and sysMenu.type!=''">
+                type=sys_menu.type,
+            </if>
+            <if test="sysMenu.type !=null and sysMenu.type!=''">
+                order_num=sys_menu.orderNum,
+            </if>
+        </trim>
+    </update>
+
+    <insert id="save">
+      insert into sys_menu
+		(
+			`parentId`,
+			`name`,
+			`url`,
+			`perms`,
+			`type`,
+			`icon`,
+			`order_num`
+		)
+		values
+		(
+			#{sysMenu.parentId},
+			#{sysMenu.name},
+			#{sysMenu.url},
+			#{sysMenu.perms},
+			#{sysMenu.type},
+			#{sysMenu.icon},
+			#{sysMenu.orderNum}
+		)
+    </insert>
+
+    <insert id="saveList">
+        insert into sys_menu (`parentId`,`name`,`url`,`perms`,`type`,`icon`,`order_num`)
+        value
+        <foreach collection="sysMenuList" item="sysMenu" separator=",">
+            (#{sysMenu.parentId},#{sysMenu.name},#{sysMenu.url}, #{sysMenu.perms},
+            #{sysMenu.type},#{sysMenu.icon},#{sysMenu.orderNum})
+        </foreach>
+
+    </insert>
 
 </mapper>

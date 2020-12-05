@@ -17,7 +17,6 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {
 
-
     UserEntity getUserByName(@Param("username") String username);
 
     List<UserEntity> selectAllUsers();

@@ -14,6 +14,5 @@ import java.util.Map;
  */
 public interface TokenService extends IService<TokenEntity> {
 
-//    PageUtils queryPage(Map<String, Object> params);
 }
 

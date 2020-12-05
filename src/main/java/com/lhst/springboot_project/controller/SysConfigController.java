@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -67,7 +68,7 @@ public class SysConfigController {
      */
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ApiOperation(value = "修改系统信息配置表")
-    public ResponseVo update(@RequestBody SysConfigEntity sysConfig){
+    public ResponseVo update(@RequestBody @Valid SysConfigEntity sysConfig){
 		sysConfigService.updateById(sysConfig);
 
         return ResponseResult.success(new Object());

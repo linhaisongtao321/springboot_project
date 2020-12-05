@@ -12,14 +12,5 @@ import com.lhst.springboot_project.po.SysRoleEntity;
  */
 public interface SysRoleService extends IService<SysRoleEntity> {
 
-//    PageUtils  queryPage(Map<String, Object> params);
 }
-//    SysRoleEntity getById(Long roleId);
-//
-//    void save(SysRoleEntity sysRole);
-//
-//    int updateById(SysRoleEntity sysRole);
-//
-//    int removeByIds(List<Long> asList);
-//}
 

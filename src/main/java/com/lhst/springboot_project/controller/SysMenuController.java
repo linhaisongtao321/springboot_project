@@ -34,7 +34,6 @@ public class SysMenuController {
     @ApiOperation("查询菜单列表")
     public ResponseVo list(@RequestParam Map<String, Object> params){
 //        PageUtils page = sysMenuService.queryPage(params);
-
         return ResponseResult.success(null);
     }
 
@@ -46,7 +45,6 @@ public class SysMenuController {
     @ApiOperation("根据id查询菜单")
     public ResponseVo info(@PathVariable("menuId") Long menuId){
 		SysMenuEntity sysMenu = sysMenuService.getById(menuId);
-
         return ResponseResult.success(sysMenu);
     }
 
@@ -67,9 +65,9 @@ public class SysMenuController {
     @RequestMapping("/update")
     @ApiOperation("更新菜单")
     public ResponseVo update(@RequestBody SysMenuEntity sysMenu){
-        int count = sysMenuService.updateById(sysMenu);
+        boolean b = sysMenuService.updateById(sysMenu);
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(b);
     }
 
     /**
@@ -78,9 +76,9 @@ public class SysMenuController {
     @RequestMapping("/delete")
     @ApiOperation("删除菜单")
     public ResponseVo delete(@RequestBody Long[] menuIds){
-        int count = sysMenuService.removeByIds(Arrays.asList(menuIds));
+        boolean b = sysMenuService.removeByIds(Arrays.asList(menuIds));
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(b);
     }
 
 }

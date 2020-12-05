@@ -17,4 +17,8 @@ public class ResponseResult implements Serializable {
         return new ResponseVo(constant.failure,"failure",data);
 
     }
+    public static ResponseVo fail(String message,Object data){
+        return new ResponseVo(constant.failure,message,data);
+
+    }
 }

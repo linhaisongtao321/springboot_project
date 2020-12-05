@@ -1,5 +1,6 @@
 package com.lhst.springboot_project.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysConfigEntity;
 
 import java.util.List;
@@ -11,14 +12,8 @@ import java.util.List;
  * @email ${email}
  * @date 2020-11-22 16:12:07
  */
-public interface SysConfigService {
+public interface SysConfigService extends IService<SysConfigEntity> {
 
-    SysConfigEntity getById(Long id);
 
-    void save(SysConfigEntity sysConfig);
-
-    void updateById(SysConfigEntity sysConfig);
-
-    void removeByIds(List<Long> asList);
 }
 

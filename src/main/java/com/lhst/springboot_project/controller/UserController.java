@@ -1,7 +1,5 @@
 package com.lhst.springboot_project.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.lhst.springboot_project.Exception.ControllerExeption;
 import com.lhst.springboot_project.Exception.ServiceExeption;
 import com.lhst.springboot_project.po.UserEntity;
@@ -11,33 +9,42 @@ import com.lhst.springboot_project.util.ResponseResult;
 import com.lhst.springboot_project.util.ResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
  * 用户
  *
- * @author wangdj
+         * @author wangdj
  * @email ${email}
  * @date 2020-11-22 16:12:07
- */
-@RestController
-@RequestMapping("/user")
-@Api("用户")
-public class UserController {
-    @Resource
-    private UserService userService;
+            */
+    @RestController
+    @RequestMapping("/user")
+    @Api("用户")
+    @Validated
+    public class UserController {
+        @Resource
+        private UserService userService;
 
-    @Resource
-    RedisUtil redisUtil;
+        @Resource
+        RedisUtil redisUtil;
 
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
     //
     @RequestMapping("captcha.jpg")
     @ApiOperation("生成验证码")
@@ -61,12 +68,15 @@ public class UserController {
      */
     @RequestMapping(value = "/login",method= RequestMethod.GET)
     @ApiOperation("用戶登录")
-    public ResponseVo login(@RequestParam("username") String username,String password) throws ControllerExeption, ServiceExeption {
+    public ResponseVo login(@RequestParam("username")@Size(min=2,message = "username 不合法") String username, String password) throws ControllerExeption, ServiceExeption {
+        logger.debug("用戶登录");
         String token=null;
         List<UserEntity> listUser=new ArrayList<>();
         try{
             token = userService.getUserByName(username,password);
+            logger.debug("token:{}",token);
             return ResponseResult.success(token);
+
         }catch (ServiceExeption e){
             return ResponseResult.fail(e.getMessage());
         }
@@ -96,12 +106,25 @@ public class UserController {
     /**
      * 保存
      */
-    @RequestMapping(value = "/save",method= RequestMethod.POST)
+    @RequestMapping(value = "/saveUsers",method= RequestMethod.POST)
     @ApiOperation("保存用户信息")
-    public ResponseVo save(@RequestBody UserEntity user){
-		userService.save(user);
+    public ResponseVo save(@RequestBody @Validated() List<UserEntity> users){
+        users.stream().forEach(user->{
+            userService.save(user);
+        });
+
         return ResponseResult.success(null);
     }
+
+
+    @RequestMapping(value = "/save",method= RequestMethod.POST)
+    @ApiOperation("保存用户信息")
+    public ResponseVo saveUsers(@RequestBody @Valid UserEntity user){
+        userService.save(user);
+        return ResponseResult.success(null);
+    }
+
+
 
     /**
      * 修改

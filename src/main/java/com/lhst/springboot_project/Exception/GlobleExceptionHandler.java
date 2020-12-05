@@ -1,30 +1,46 @@
 package com.lhst.springboot_project.Exception;
 
-import com.lhst.springboot_project.util.ResponseResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @ControllerAdvice
 public class GlobleExceptionHandler {
-
-    @ExceptionHandler(value = ControllerExeption.class) //这个注解，接受异常
-    @ResponseBody //返回json
-    public ResponseResult serviceHandler(HttpServletRequest req, ServiceExeption e) throws Exception {
-        return null;
+    @ResponseBody
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Map<String, Object> methodArgNotValidException(ConstraintViolationException cve, HttpServletRequest httpServletRequest) {
+        Set<ConstraintViolation<?>> cves = cve.getConstraintViolations();
+        StringBuffer errorMsg = new StringBuffer();
+        cves.forEach(ex -> errorMsg.append(ex.getMessage()));
+        Map<String, Object> respMap = new HashMap<>(4);
+        respMap.put("code", -1);
+        respMap.put("msg", errorMsg);
+        return respMap;
     }
 
-    @ExceptionHandler(value = ServiceExeption.class) //这个注解，接受异常
-    @ResponseBody //返回json
-    public ResponseResult controllerHandler(HttpServletRequest req, ServiceExeption e) throws Exception {
-        return null;
-    }
+    @ResponseBody
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public Map<String, Object> methodDtoNotValidException(Exception ex, HttpServletRequest request) {
+        MethodArgumentNotValidException c = (MethodArgumentNotValidException) ex;
+        List<ObjectError> errors = c.getBindingResult().getAllErrors();
+        StringBuffer errorMsg = new StringBuffer();
+        errors.stream().forEach(x -> {
 
-    @ExceptionHandler(value = DaoExeption.class) //这个注解，接受异常
-    @ResponseBody //返回json
-    public ResponseResult daoHandler(HttpServletRequest req, ServiceExeption e) throws Exception {
-        return null;
+            errorMsg.append(x.getDefaultMessage()).append(";");
+        });
+        Map<String, Object> respMap = new HashMap<>(4);
+        respMap.put("code", -1);
+        respMap.put("msg", errorMsg);
+        return respMap;
     }
 }

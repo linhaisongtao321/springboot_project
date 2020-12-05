@@ -6,6 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.experimental.Accessors;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * 系统配置信息表
@@ -16,6 +21,7 @@ import lombok.Data;
  */
 @Data
 @TableName("sys_config")
+@Accessors(chain = true)
 public class SysConfigEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +29,7 @@ public class SysConfigEntity implements Serializable {
 	 * 
 	 */
 	@TableId
+	@NotNull(message="主键不能空")
 	private Long id;
 	/**
 	 * key

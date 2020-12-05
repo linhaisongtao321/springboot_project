@@ -14,6 +14,5 @@ import java.util.Map;
  */
 public interface SysUserService extends IService<SysUserEntity> {
 
-//    PageUtils queryPage(Map<String, Object> params);
 }
 

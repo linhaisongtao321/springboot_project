@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 系统用户
@@ -16,6 +17,7 @@ import lombok.Data;
  */
 @Data
 @TableName("sys_user")
+@Accessors(chain = true)
 public class SysUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

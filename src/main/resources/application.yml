@@ -1,17 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/renren_security?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
   redis:
-    #redis 服务器地址
     hostName: 127.0.0.1
-    #redis端口
     port: 6379
-    #redis 密码
     password: geovis
-    #客户端超时时间单位是毫秒 默认是2000
 #    timeout: 5000
     #最大空闲数
     maxIdle: 20
@@ -34,35 +30,50 @@ spring:
     #数据库
     database: 0
 
-
   http:
     encoding:
       charset: utf-8
       force: true
       enabled: true
+
   application:
     name: springboot
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 15672
+    username: admin
+    password: admin
+  servlet:
+    multipart:
+      max-request-size: 10024MB
+      max-file-size: 10024MB
 server:
   port: 9000
   servlet:
     context-path: /springboot
 
-
-#person:
-#  lastName: zhangsan
-#  age: 20
-#  boss: false
-#  birth: 2020/9/17
-#  maps: {"1",111,"2",222}
-#  lists:
-#    -wang
-#    -zhang
-#    -li
-#  dog:
-#    name: dog
-#    age: 1
-mybatis-plus:
+mybatis:
   mapper-locations: classpath:mapper/*.xml
 logging:
-  file: springboot.log
+  file: ../logs/${spring.application.name}.log
+  level:
+    com.lhst.springboot_project.controller: debug
 
+
+
+
+
+person:
+  lastName: zhangsan
+  age: 20
+  boss: false
+  birth: 2020/9/17
+  maps: {"1",111,"2",222}
+  lists:
+    -wang
+    -zhang
+    -li
+  dog:
+    name: dog
+    age: 1

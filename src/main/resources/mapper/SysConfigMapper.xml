@@ -5,12 +5,11 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.lhst.springboot_project.po.SysConfigEntity" id="sysConfigMap">
-        <result property="id" column="id"/>
+        <result property="id" column="id" />
         <result property="key" column="key"/>
         <result property="value" column="value"/>
         <result property="status" column="status"/>
         <result property="remark" column="remark"/>
     </resultMap>
-
 
 </mapper>
