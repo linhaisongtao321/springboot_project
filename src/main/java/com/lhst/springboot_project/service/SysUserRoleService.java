@@ -1,11 +1,7 @@
 package com.lhst.springboot_project.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhst.springboot_project.po.SysUserEntity;
 import com.lhst.springboot_project.po.SysUserRoleEntity;
-import com.lhst.springboot_project.po.TokenEntity;
-
-import java.util.List;
 
 /**
  * 用户与角色对应关系

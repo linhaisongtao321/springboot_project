@@ -3,8 +3,6 @@ package com.lhst.springboot_project.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysMenuEntity;
 
-import java.util.List;
-
 /**
  * 菜单管理
  *

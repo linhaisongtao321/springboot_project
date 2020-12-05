@@ -3,8 +3,6 @@ package com.lhst.springboot_project.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysConfigEntity;
 
-import java.util.List;
-
 /**
  * 系统配置信息表
  *

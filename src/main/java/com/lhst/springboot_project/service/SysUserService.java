@@ -3,8 +3,6 @@ package com.lhst.springboot_project.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lhst.springboot_project.po.SysUserEntity;
 
-import java.util.Map;
-
 /**
  * 系统用户
  *
