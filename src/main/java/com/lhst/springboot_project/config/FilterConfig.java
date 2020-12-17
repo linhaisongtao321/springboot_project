@@ -9,7 +9,6 @@
 package com.lhst.springboot_project.config;
 
 import com.lhst.springboot_project.common.servlet.CrosFilter;
-import com.lhst.springboot_project.common.servlet.LoginFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +23,18 @@ import javax.servlet.DispatcherType;
 @Configuration
 public class FilterConfig {
 
-    @Bean
-    public FilterRegistrationBean shiroFilterRegistration() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new LoginFilter());
-        //该值缺省为false，表示生命周期由SpringApplicationContext管理，设置为true则表示由ServletContainer管理
-//        registration.addInitParameter("targetFilterLifecycle", "true");
-        registration.setEnabled(true);
-        registration.setOrder(Integer.MAX_VALUE - 1);
-        registration.addUrlPatterns("/*");
-        registration.setOrder(1);
-        return registration;
-    }
+//    @Bean
+//    public FilterRegistrationBean shiroFilterRegistration() {
+//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//        registration.setFilter(new LoginFilter());
+//        //该值缺省为false，表示生命周期由SpringApplicationContext管理，设置为true则表示由ServletContainer管理
+////        registration.addInitParameter("targetFilterLifecycle", "true");
+//        registration.setEnabled(true);
+//        registration.setOrder(Integer.MAX_VALUE - 1);
+//        registration.addUrlPatterns("/*");
+//        registration.setOrder(1);
+//        return registration;
+//    }
 
     @Bean
     public FilterRegistrationBean crosRegistration() {

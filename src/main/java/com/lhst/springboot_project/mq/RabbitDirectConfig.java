@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 
-//@Configuration
+@Configuration
 public class RabbitDirectConfig {
     public final static String DIRECTNAME = "sang-direct";
     @Bean
@@ -23,4 +23,7 @@ public class RabbitDirectConfig {
         return BindingBuilder.bind(queue())
                 .to(directExchange()).with("direct");
     }
+
+
+
 }

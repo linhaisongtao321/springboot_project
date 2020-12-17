@@ -88,7 +88,6 @@
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.vividsolutions:jts:1.8" level="project" />
-    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-ui:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-boot-starter:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-boot-autoconfigure:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring:2.0.2" level="project" />
@@ -108,6 +107,7 @@
     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-metadata:1.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.2.0.Final" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-bean-validators:2.9.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-ui:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.1.0" level="project" />

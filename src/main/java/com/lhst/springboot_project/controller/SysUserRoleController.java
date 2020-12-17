@@ -4,6 +4,7 @@ import com.lhst.springboot_project.po.SysUserRoleEntity;
 import com.lhst.springboot_project.service.SysUserRoleService;
 import com.lhst.springboot_project.util.ResponseResult;
 import com.lhst.springboot_project.util.ResponseVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sysuserrole")
+@Api(tags = "用户角色")
 public class SysUserRoleController {
     @Resource
     private SysUserRoleService sysUserRoleService;
@@ -41,9 +43,9 @@ public class SysUserRoleController {
      */
     @RequestMapping("/info/{id}")
     public ResponseVo info(@RequestParam("id") Long id,@RequestParam("roleid")Long roleid){
-		List<SysUserRoleEntity> sysUserRole = sysUserRoleService.getById(id,roleid);
+        SysUserRoleEntity userRole = sysUserRoleService.getById(id);
 
-        return ResponseResult.success(sysUserRole);
+        return ResponseResult.success(userRole);
     }
 
     /**

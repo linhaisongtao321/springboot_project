@@ -6,13 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.lhst.springboot_project.ParamValid.Insert;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 /**
  * 用户
@@ -40,15 +38,13 @@ import javax.validation.constraints.Size;
 	/**
 	 * 手机号
 	 */
-	@Pattern(regexp = "1[3|4|5|7|8][0-9]{8}",message = "手机号码不正确",groups = Insert.class)
+	@Pattern(regexp = "1[3|4|5|7|8][0-9]{8}",message = "手机号码不正确")
 	private String mobile;
 	/**
 	 * 密码
 	 */
 	private String password;
-	/**
-	 * 创建时间
-	 */
+
 	private Date createTime;
 
 }

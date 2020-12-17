@@ -4,6 +4,7 @@ import com.lhst.springboot_project.po.SysRoleMenuEntity;
 import com.lhst.springboot_project.service.SysRoleMenuService;
 import com.lhst.springboot_project.util.ResponseVo;
 import com.lhst.springboot_project.util.ResponseResult;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import java.util.Map;
  * @email ${email}
  * @date 2020-11-22 16:12:07
  */
+@Api(tags="角色管理")
 @RestController
 @RequestMapping("/sysrolemenu")
 public class SysRoleMenuController {
@@ -62,9 +64,9 @@ public class SysRoleMenuController {
      */
     @RequestMapping("/update")
     public ResponseVo update(@RequestBody SysRoleMenuEntity sysRoleMenu){
-        int count=sysRoleMenuService.updateById(sysRoleMenu);
+        sysRoleMenuService.updateById(sysRoleMenu);
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -72,9 +74,9 @@ public class SysRoleMenuController {
      */
     @RequestMapping("/delete")
     public ResponseVo delete(@RequestBody Long[] ids){
-		int count=sysRoleMenuService.removeByIds(Arrays.asList(ids));
+		sysRoleMenuService.removeByIds(Arrays.asList(ids));
 
-        return ResponseResult.success(count);
+        return ResponseResult.success(null);
     }
 
 }

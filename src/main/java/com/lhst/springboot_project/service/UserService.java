@@ -13,5 +13,6 @@ import com.lhst.springboot_project.po.UserEntity;
 public interface UserService extends IService<UserEntity> {
 
 
+    String getUserByName(String username, String password) ;
 }
 

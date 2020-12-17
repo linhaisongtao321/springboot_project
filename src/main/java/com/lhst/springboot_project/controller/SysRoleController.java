@@ -4,6 +4,8 @@ import com.lhst.springboot_project.po.SysRoleEntity;
 import com.lhst.springboot_project.service.SysRoleService;
 import com.lhst.springboot_project.util.ResponseVo;
 import com.lhst.springboot_project.util.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sysrole")
+@Api(tags="角色")
 public class SysRoleController {
     @Resource
     private SysRoleService sysRoleService;
@@ -28,7 +31,8 @@ public class SysRoleController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @ApiOperation("查询角色列表")
+    @GetMapping("/list")
     public ResponseVo list(@RequestParam Map<String, Object> params){
 //        PageUtils page = sysRoleService.queryPage(params);
 
@@ -39,8 +43,9 @@ public class SysRoleController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{roleId}")
-    public ResponseVo info(@PathVariable("roleId") Long roleId){
+    @ApiOperation("根据id查询角色")
+    @GetMapping("/info")
+    public ResponseVo info(@RequestParam("roleId") Long roleId){
 		SysRoleEntity sysRole = sysRoleService.getById(roleId);
 
         return ResponseResult.success(null);
@@ -49,7 +54,8 @@ public class SysRoleController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @ApiOperation("新增角色")
+    @PostMapping("/save")
     public ResponseVo save(@RequestBody SysRoleEntity sysRole){
 		sysRoleService.save(sysRole);
 
@@ -59,7 +65,8 @@ public class SysRoleController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @ApiOperation("更新角色")
+    @PostMapping("/update")
     public ResponseVo update(@RequestBody SysRoleEntity sysRole){
 		sysRoleService.updateById(sysRole);
 
@@ -69,7 +76,8 @@ public class SysRoleController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @ApiOperation("删除角色")
+    @GetMapping("/delete")
     public ResponseVo delete(@RequestBody Long[] roleIds){
         boolean result = sysRoleService.removeByIds(Arrays.asList(roleIds));
 

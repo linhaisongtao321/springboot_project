@@ -1,10 +1,13 @@
 package com.lhst.springboot_project.po;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -54,5 +57,8 @@ public class SysMenuEntity implements Serializable {
 	 * 排序
 	 */
 	private Integer orderNum;
+
+	@TableField(exist = false)
+	private List<SysMenuEntity> child;
 
 }

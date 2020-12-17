@@ -1,5 +1,7 @@
 package com.lhst.springboot_project.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.additional.query.impl.LambdaQueryChainWrapper;
 import com.lhst.springboot_project.po.SysConfigEntity;
 import com.lhst.springboot_project.service.SysConfigService;
 import com.lhst.springboot_project.util.ResponseVo;
@@ -25,7 +27,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sysconfig")
-@Api(description = "系统配置信息表")
+@Api(tags = "系统配置信息表")
 public class SysConfigController {
     @Resource
     private SysConfigService sysConfigService;
@@ -36,6 +38,7 @@ public class SysConfigController {
     @GetMapping("/list")
     @ApiOperation(value = "获取系统信息配置表")
     public ResponseVo list(@RequestParam Map<String, Object> params){
+        LambdaQueryChainWrapper<SysConfigEntity> lam = sysConfigService.lambdaQuery();
 
         return ResponseResult.success(new Object());
     }

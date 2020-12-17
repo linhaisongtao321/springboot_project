@@ -4,6 +4,7 @@ import com.lhst.springboot_project.po.TokenEntity;
 import com.lhst.springboot_project.service.TokenService;
 import com.lhst.springboot_project.util.ResponseResult;
 import com.lhst.springboot_project.util.ResponseVo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/token")
+@Api(tags = "token管理")
 public class TokenController {
     @Resource
     private TokenService tokenService;
@@ -28,7 +30,7 @@ public class TokenController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ResponseVo list(@RequestParam Map<String, Object> params){
 //        PageUtils page = tokenService.queryPage(params);
 
@@ -39,7 +41,7 @@ public class TokenController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{userId}")
+    @GetMapping("/info/{userId}")
     public ResponseVo info(@PathVariable("userId") Long userId){
 		TokenEntity token = tokenService.getById(userId);
 
@@ -49,7 +51,7 @@ public class TokenController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseVo save(@RequestBody TokenEntity token){
 		tokenService.save(token);
 
@@ -59,7 +61,7 @@ public class TokenController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public ResponseVo update(@RequestBody TokenEntity token){
 		tokenService.updateById(token);
 
@@ -69,7 +71,7 @@ public class TokenController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @GetMapping("/delete")
     public ResponseVo delete(@RequestBody Long[] userIds){
 		tokenService.removeByIds(Arrays.asList(userIds));
 

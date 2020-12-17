@@ -17,9 +17,8 @@ public class ApplicationTest {
 
     @Test
     public void directTest() {
-        rabbitTemplate.convertAndSend("hello-queue", "hello direct!");
+        rabbitTemplate.convertAndSend("hello-QUEUE", "hello direct!");
     }
-
     @Test
     public void fanoutTest() {
         rabbitTemplate.convertAndSend(RabbitFanoutConfig.FANOUTNAME,

@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/syslog")
-@Api(description = "日志信息")
+@Api(tags = "日志信息")
 public class SysLogController {
     @Resource
     private SysLogService sysLogService;
@@ -68,9 +68,10 @@ public class SysLogController {
     @RequestMapping(value = "/update",method= RequestMethod.POST)
     @ApiOperation("更新日志")
     public ResponseVo update(@RequestBody SysLogEntity sysLog){
-        int count = sysLogService.updateById(sysLog);
 
-        return ResponseResult.success(count);
+        sysLogService.updateById(sysLog);
+
+        return ResponseResult.success(null);
     }
 
     /**
@@ -79,8 +80,8 @@ public class SysLogController {
     @RequestMapping(value = "/delete",method= RequestMethod.POST)
     @ApiOperation("删除日志")
     public ResponseVo delete(@RequestBody Long[] ids){
-        int count = sysLogService.removeByIds(Arrays.asList(ids));
-        return ResponseResult.success(count);
+        sysLogService.removeByIds(Arrays.asList(ids));
+        return ResponseResult.success(null);
     }
 
 }

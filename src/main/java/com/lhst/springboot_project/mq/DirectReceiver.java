@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 //@Component
 public class DirectReceiver {
-    @RabbitListener(queues = "hello-queue")
+    @RabbitListener(queues = "hello-QUEUE")
     public void handler1(String msg) {
         System.out.println("DirectReceiver:" + msg);
     }

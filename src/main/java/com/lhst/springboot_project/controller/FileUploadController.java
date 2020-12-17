@@ -3,6 +3,7 @@ package com.lhst.springboot_project.controller;
 import com.lhst.springboot_project.util.RedisUtil;
 import com.lhst.springboot_project.util.ResponseResult;
 import com.lhst.springboot_project.util.ResponseVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ResourceUtils;
@@ -18,11 +19,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/file")
+@Api(tags = "文件上传下载")
 public class FileUploadController {
 
     @Autowired
     RedisUtil redisUtil;
 
+    @ApiOperation(value = "文件上传")
     @PostMapping("/upload")
     @ResponseBody
     public ResponseVo upload(@RequestHeader("files") String files, @RequestParam("filename") String filename,MultipartFile file, HttpServletRequest request) throws IOException {
