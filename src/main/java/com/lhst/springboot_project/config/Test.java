@@ -6,5 +6,7 @@ public class Test {
 
         System.out.println("hot-fix 修改");
         System.out.println("回到master");
+
+        System.out.println("修改222");
     }
 }
